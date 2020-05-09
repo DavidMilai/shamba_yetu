@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'results.dart';
+import 'components/listTileWithAction.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -40,16 +41,10 @@ class Home extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Card(
-                child: ListTile(
-                  onTap: () {},
-                  leading: Icon(Icons.accessibility),
-                  title: Text('Profile'),
-                ),
-              ),
-            ),
+            Theme(
+                data:
+                    Theme.of(context).copyWith(canvasColor: Colors.transparent),
+                child: TileWithAction()),
             Padding(
               padding: EdgeInsets.all(8.0),
               child: Card(
