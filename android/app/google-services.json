@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "948581904342",
+    "firebase_url": "https://shamba-yetu.firebaseio.com",
+    "project_id": "shamba-yetu",
+    "storage_bucket": "shamba-yetu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948581904342:android:681359669f4b517535fe77",
+        "android_client_info": {
+          "package_name": "com.example.vegymarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "948581904342-rdarfbdmedlgl783q5rfm67c98qlkn94.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh62D90IK0SDOIZdpILw7x2W3-vAUT89s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "948581904342-rdarfbdmedlgl783q5rfm67c98qlkn94.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
