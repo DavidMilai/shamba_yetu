@@ -22,6 +22,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile'),
@@ -29,9 +30,6 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
       body: Padding(
         padding: EdgeInsets.all(8.0),
         child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
@@ -39,9 +37,9 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                 child: Stack(
                   children: <Widget>[
                     Align(
-                      alignment: Alignment(0, -0.95),
+                      alignment: Alignment(0, -0.98),
                       child: CircleAvatar(
-                        radius: 60,
+                        radius: size.width / 7,
                         backgroundImage: AssetImage('images/profile.jpg'),
                       ),
                     ),
@@ -117,7 +115,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                       child: Text(
                         'Harry Potter',
                         style: TextStyle(
-                          fontSize: 30,
+                          fontSize: size.width / 14,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -171,7 +169,7 @@ class _ProfileState extends State<Profile> with TickerProviderStateMixin {
                                 child: Text(
                                   'Sell',
                                   style: TextStyle(
-                                      fontSize: 20, color: Colors.white),
+                                      fontSize: 15, color: Colors.white),
                                 ),
                               ),
                             ),
