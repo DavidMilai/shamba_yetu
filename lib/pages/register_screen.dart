@@ -17,6 +17,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController emailInputController;
   TextEditingController passwordInputController;
   bool isLoading = false;
+  String email;
+  String password;
 
   String emailValidator(String value) {
     Pattern pattern =
@@ -41,10 +43,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   void initState() {
-    firstNameInputController = new TextEditingController();
-    lastNameInputController = new TextEditingController();
-    emailInputController = new TextEditingController();
-    passwordInputController = new TextEditingController();
+    firstNameInputController = TextEditingController();
+    lastNameInputController = TextEditingController();
+    emailInputController = TextEditingController();
+    passwordInputController = TextEditingController();
     super.initState();
   }
 
@@ -122,6 +124,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           labelText: 'Email',
                         ),
+                        onChanged: (value) {
+                          email = value;
+                        },
                         keyboardType: TextInputType.emailAddress,
                         validator: emailValidator,
                       ),
@@ -135,6 +140,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           labelText: 'Password',
                         ),
+                        onChanged: (value) {
+                          password = value;
+                        },
                         validator: pwdValidator,
                       ),
                       SizedBox(height: 15),
@@ -155,17 +163,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           onPressed: () async {
                             if (_registerFormKey.currentState.validate()) {
                               try {
+                                isLoading = true;
                                 final newUser =
                                     await _auth.createUserWithEmailAndPassword(
-                                        email: emailInputController.text,
-                                        password: passwordInputController.text);
+                                        email: email, password: password);
                                 if (newUser != null) {
                                   Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Home()));
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Home(),
+                                    ),
+                                  );
                                 }
                               } catch (e) {
+                                isLoading = false;
                                 print(e);
                               }
                             }

@@ -1,8 +1,37 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'profile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'sell_page.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  final _auth = FirebaseAuth.instance;
+  FirebaseUser loggedInUser;
+
+  void getCurrentUser() async {
+    final user = await _auth.currentUser();
+    try {
+      if (user != null) {
+        loggedInUser = user;
+        print(loggedInUser.uid);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  @override
+  void initState() {
+    getCurrentUser();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -111,7 +140,14 @@ class Home extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {}),
+      floatingActionButton: FloatingActionButton(
+        elevation: 10,
+        child: Icon(
+          Icons.search,
+          color: Colors.white,
+        ),
+        onPressed: () {},
+      ),
     );
   }
 }

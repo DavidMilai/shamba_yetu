@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.green,
-        accentColor: Colors.limeAccent,
+        accentColor: Colors.lightGreen[500],
       ),
       initialRoute: '/',
       routes: {
