@@ -4,6 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'sell_page.dart';
+import 'package:vegymarket/widgets/featuredCard.dart';
+import 'package:vegymarket/widgets/adCard.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -47,6 +49,7 @@ class _HomeState extends State<Home> {
         child: Column(
           children: <Widget>[
             Container(
+              margin: EdgeInsets.only(bottom: 20),
               height: size.height * 0.15,
               child: Stack(
                 children: [
@@ -111,6 +114,155 @@ class _HomeState extends State<Home> {
               ),
             ),
             Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                children: [
+                  Container(
+                    height: 20,
+                    child: Stack(
+                      children: [
+                        Text(
+                          'Recent',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
+                        Positioned(
+                            bottom: 0,
+                            left: 0,
+                            right: 0,
+                            child: Container(
+                              height: 7,
+                              color: Colors.green.withOpacity(0.3),
+                            ))
+                      ],
+                    ),
+                  ),
+                  Spacer(),
+                  FlatButton(
+                    onPressed: () {},
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    color: Colors.green,
+                    child: Text(
+                      'More',
+                      style: TextStyle(
+                        color: Colors.white,
+                        letterSpacing: 1,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  AdCard(
+                    size: size,
+                    imageLocation: 'images/eggs.jpg',
+                    title: 'Eggs',
+                    location: 'Langata',
+                    price: 10,
+                  ),
+                  AdCard(
+                    size: size,
+                    imageLocation: 'images/tomatoes.jpg',
+                    title: 'Tomatoes',
+                    location: 'Karen',
+                    price: 120,
+                  ),
+                  AdCard(
+                    size: size,
+                    imageLocation: 'images/mangoes.jpg',
+                    title: 'Mangoes',
+                    location: 'Huruma',
+                    price: 120,
+                  ),
+                  AdCard(
+                    size: size,
+                    imageLocation: 'images/vegies.jpg',
+                    title: 'Everything',
+                    location: 'Runda',
+                    price: 120,
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                children: [
+                  Container(
+                    height: 20,
+                    child: Stack(
+                      children: [
+                        Text(
+                          'Featured',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
+                        Positioned(
+                            bottom: 0,
+                            left: 0,
+                            right: 0,
+                            child: Container(
+                              height: 7,
+                              color: Colors.green.withOpacity(0.3),
+                            ))
+                      ],
+                    ),
+                  ),
+                  Spacer(),
+                  FlatButton(
+                    onPressed: () {},
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    color: Colors.green,
+                    child: Text(
+                      'More',
+                      style: TextStyle(
+                        color: Colors.white,
+                        letterSpacing: 1,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  FeaturedCard(
+                    size: size,
+                    imageLocation: 'images/carrot.jpg',
+                    title: 'Carrots',
+                    location: 'Langata',
+                    price: 10,
+                  ),
+                  FeaturedCard(
+                    size: size,
+                    imageLocation: 'images/beans.jpg',
+                    title: 'Clean Beans',
+                    location: 'Ngong',
+                    price: 150,
+                  ),
+                  FeaturedCard(
+                    size: size,
+                    imageLocation: 'images/eggs.jpg',
+                    title: 'Eggs',
+                    location: 'Langata',
+                    price: 10,
+                  ),
+                ],
+              ),
+            ),
+            Padding(
               padding: EdgeInsets.all(3.0),
               child: Card(
                 child: ListTile(
@@ -139,14 +291,6 @@ class _HomeState extends State<Home> {
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        elevation: 10,
-        child: Icon(
-          Icons.search,
-          color: Colors.white,
-        ),
-        onPressed: () {},
       ),
     );
   }
