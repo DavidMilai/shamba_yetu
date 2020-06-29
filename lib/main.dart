@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'pages/home.dart';
+import 'screens/home.dart';
 import 'package:flutter/services.dart';
-import 'package:vegymarket/pages/login_screen.dart';
+import 'package:vegymarket/screens/login_screen.dart';
 
 void main() => runApp(MyApp());
 
