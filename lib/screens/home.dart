@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:vegymarket/screens/profile.dart';
+import 'package:vegymarket/screens/edit_profile.dart';
+import 'package:vegymarket/tabs/favorites_tab.dart';
 import 'package:vegymarket/tabs/home_tab.dart';
+import 'package:vegymarket/tabs/profile_tab.dart';
+import 'package:vegymarket/tabs/sell_tab.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -17,11 +20,11 @@ class _HomeState extends State<Home> {
   String title;
 
   final tabs = [
-    Center(child: Text('page one')),
-    Center(child: Text('page two')),
-    Center(child: Text('page three')),
-    Center(child: Text('page four')),
-    Profile(),
+    Center(),
+    FavoriteTab(),
+    SellTab(),
+    Center(child: Text('this shall be a bumpy ride')),
+    ProfileTab(),
   ];
 
   void getCurrentUser() async {
@@ -47,6 +50,18 @@ class _HomeState extends State<Home> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+          actions: currentIndex == 4
+              ? [
+                  IconButton(
+                      icon: Icon(Icons.edit),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => EditProfile()));
+                      })
+                ]
+              : [],
           elevation: currentIndex == 0 ? 0 : 10,
           title: Text(currentIndex == 0 ? '' : title)),
       body: currentIndex == 0 ? HomeTab(size: size) : tabs[currentIndex],
@@ -83,8 +98,8 @@ class _HomeState extends State<Home> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight:
-                        currentIndex == 1 ? FontWeight.bold : FontWeight.w400,
-                    color: currentIndex == 1 ? Colors.green : Colors.black54,
+                        currentIndex == 0 ? FontWeight.bold : FontWeight.w400,
+                    color: currentIndex == 0 ? Colors.green : Colors.black54,
                   ),
                 )
               ],

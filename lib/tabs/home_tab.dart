@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vegymarket/screens/profile.dart';
 import 'package:vegymarket/screens/details_screen.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:vegymarket/tabs/profile_tab.dart';
 import 'package:vegymarket/widgets/adCard.dart';
 import 'package:vegymarket/widgets/featuredCard.dart';
 
@@ -278,7 +278,7 @@ class HomeTab extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Profile(),
+                      builder: (context) => ProfileTab(),
                     ),
                   );
                 },

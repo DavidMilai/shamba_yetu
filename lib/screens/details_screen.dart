@@ -11,6 +11,8 @@ class DetailsScreen extends StatefulWidget {
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
+  bool tapped = false;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -43,7 +45,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             Spacer(),
                             Container(
                               margin: EdgeInsets.symmetric(
-                                  vertical: size.height * 0.05),
+                                  vertical: size.height * 0.04),
                               padding: EdgeInsets.all(8),
                               height: 62,
                               width: 62,
@@ -67,35 +69,41 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 color: Colors.green,
                               ),
                             ),
-                            Container(
-                              margin: EdgeInsets.symmetric(
-                                  vertical: size.height * 0.05),
-                              padding: EdgeInsets.all(8),
-                              height: 62,
-                              width: 62,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      offset: Offset(0, 15),
-                                      blurRadius: 22,
-                                      color: Colors.green.withOpacity(0.39),
-                                    ),
-                                    BoxShadow(
-                                      offset: Offset(-15, -15),
-                                      blurRadius: 20,
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  tapped = !tapped;
+                                });
+                              },
+                              child: Container(
+                                  margin: EdgeInsets.symmetric(
+                                      vertical: size.height * 0.04),
+                                  padding: EdgeInsets.all(8),
+                                  height: 62,
+                                  width: 62,
+                                  decoration: BoxDecoration(
                                       color: Colors.white,
-                                    )
-                                  ]),
-                              child: SvgPicture.asset(
-                                'images/heart.svg',
-                                color: Colors.green,
-                              ),
+                                      borderRadius: BorderRadius.circular(10),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          offset: Offset(0, 15),
+                                          blurRadius: 22,
+                                          color: Colors.green.withOpacity(0.39),
+                                        ),
+                                        BoxShadow(
+                                          offset: Offset(-15, -15),
+                                          blurRadius: 20,
+                                          color: Colors.white,
+                                        )
+                                      ]),
+                                  child: tapped
+                                      ? SvgPicture.asset('images/heart-red.svg')
+                                      : SvgPicture.asset('images/heart.svg',
+                                          color: Colors.green)),
                             ),
                             Container(
                               margin: EdgeInsets.symmetric(
-                                  vertical: size.height * 0.05),
+                                  vertical: size.height * 0.04),
                               padding: EdgeInsets.all(8),
                               height: 62,
                               width: 62,
@@ -119,6 +127,29 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 color: Colors.green,
                               ),
                             ),
+                            Container(
+                                margin: EdgeInsets.symmetric(
+                                    vertical: size.height * 0.03),
+                                padding: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        offset: Offset(0, 15),
+                                        blurRadius: 22,
+                                        color: Colors.green.withOpacity(0.39),
+                                      ),
+                                      BoxShadow(
+                                        offset: Offset(-15, -15),
+                                        blurRadius: 20,
+                                        color: Colors.white,
+                                      )
+                                    ]),
+                                child: Text(
+                                  '20 Views',
+                                  style: TextStyle(color: Colors.green),
+                                )),
                           ],
                         ),
                       ),
@@ -170,13 +201,24 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     ]),
                   ),
                   Spacer(),
-                  Text(
-                    '200 KSH',
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.green,
-                        fontWeight: FontWeight.w600),
-                  )
+                  RichText(
+                    text: TextSpan(children: [
+                      TextSpan(
+                        text: '200 KSH\n',
+                        style: TextStyle(
+                            fontSize: 25,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      TextSpan(
+                        text: 'Date',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.green,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ]),
+                  ),
                 ],
               ),
             ),
