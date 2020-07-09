@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vegymarket/screens/details_screen.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:vegymarket/screens/product_screen.dart';
 import 'package:vegymarket/tabs/profile_tab.dart';
 import 'package:vegymarket/widgets/adCard.dart';
 import 'package:vegymarket/widgets/featuredCard.dart';
@@ -105,7 +106,12 @@ class HomeTab extends StatelessWidget {
                 ),
                 Spacer(),
                 FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProductScreen()));
+                  },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
